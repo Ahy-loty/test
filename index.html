@@ -1,0 +1,34 @@
+<!-- adpage.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ad page (fetch free ad)</title>
+  <style>
+    body{font-family:Arial;padding:20px}
+    .ad {border:1px solid #ddd;padding:12px;width:320px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <h2>Demo page that loads an ad from a free source</h2>
+  <p>This page simulates an app page embedding an ad iframe served from /creative (which itself fetches an image from jsonplaceholder).</p>
+
+  <div class="ad">
+    <h4>Sponsored</h4>
+    <!-- iframe src points to server endpoint /creative.html -->
+    <iframe id="adframe" src="/creative.html" width="300" height="150" frameborder="0"></iframe>
+  </div>
+
+  <script>
+    // Log incoming postMessage from creative (so you can see injected messages)
+    window.addEventListener('message', function(e){
+      console.log('Parent received postMessage:', e.origin, e.data);
+      // Example of vulnerable behavior: naively call Native if payload asks
+      if (e.data && e.data.cmd === 'askNative') {
+        console.log('Parent would call native bridge here (POC). data:', e.data);
+        // DO NOT call real native in PoC. Just log.
+      }
+    }, false);
+  </script>
+</body>
+</html>
