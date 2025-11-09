@@ -3,7 +3,9 @@
 <body>
     <script>
          parent.postMessage("askNative","*");
-        console.log(" hi bay kay lay");
+          window.addEventListener('message' , function(e) {
+               console.log("from Origin hiding", JSON.stringify(e.data));
+        });
     </script>
 </body>
 </ht
