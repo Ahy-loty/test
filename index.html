@@ -19,21 +19,6 @@
     <iframe id="adframe" src="https://ahy-loty.github.io/test/ads.html" width="300" height="150" frameborder="0"></iframe>
   </div>
 
-  <script>
-    // Log incoming postMessage from creative (so you can see injected messages)
-     const secret = "API_SECRET_KEY_1234" ;
 
-            window.addEventListener('message' , function(e) {
-                console.log("Origin" , e.origin);
-                console.log("Data" , e.data);
-                 if(e.origin === "null"){
-                       if(e.data ==="askNative"){
-                             e.source.postMessage({type:'secret', value:secret}, '*');
-                 } }
-
-                 console.log("advice","trust no null origin");
-
-            });
-  </script>
 </body>
 </html>
