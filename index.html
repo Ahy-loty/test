@@ -27,7 +27,7 @@
                 console.log("Origin" , e.origin);
                 console.log("Data" , e.data);
                  if(e.origin === "null"){
-                       if(e.data ==="leak-secret"){
+                       if(e.data ==="askNative"){
                              e.source.postMessage({type:'secret', value:secret}, '*');
                  } }
 
